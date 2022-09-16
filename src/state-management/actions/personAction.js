@@ -12,12 +12,12 @@ export const personRemove = (person) => (
 );
 export const personUpdate = (person) => (
     {
-        type:PERSON_UPDATE,
-        payload:person
+        type: PERSON_UPDATE,
+        payload: person
     }
 );
 export const personGetAll = () => (
     {
-        type:PERSON_GET_ALL
+        type: PERSON_GET_ALL
     }
 );
