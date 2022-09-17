@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PERSON_GET_ALL } from "../../actions/actionTypes";
-import { personGetAll } from "../../actions/personAction";
+import { personGetAll, personRemove } from "../../actions/personAction";
 
 export const PeopleList = () => {
-    const people = useSelector(store => store.personReducer);
-    console.log("p is : " , people);
+    const people = useSelector(store => store.personState);
+    console.log("p is : ", people);
     const dispatch = useDispatch();
     useEffect(() => {
-        let x = dispatch(personGetAll());
-        console.log("x" , x);
-    } , []);
-   return (
+        dispatch(personGetAll());
+    }, []);
+    const deletePerson = (person) => {
+        dispatch(personRemove(person));
+    }
+    return (
         <>
             <table className="table table-striped">
                 <thead>
@@ -33,6 +35,7 @@ export const PeopleList = () => {
                                         {person.name}
                                     </td>
                                     <td>{person.phone}</td>
+                                    <td><button onClick={() => { deletePerson(person) }}>delete</button></td>
                                 </tr>
                             </>
                         )

@@ -17,6 +17,6 @@ export const personReducer = (state = [...initialState], action) => {
             newData.find(a => a.id === action.payload.id).phone = action.phone;
             return newData;
         default:
-            return [...state];
+            return state;
     }
 }
