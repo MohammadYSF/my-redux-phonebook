@@ -8,11 +8,12 @@ export const PeopleList = () => {
     const isLoading = useSelector(store => store.postState.isLoading);
     const dispatch = useDispatch();
     useEffect(() => {
-        if (JSON.parse(localStorage.getItem("postState")).length > 0) {
-            getAllPosts(dispatch);
+        if (localStorage.getItem("postState") == null) {
+            // do nothing
+
         }
         else {
-            //do nothing
+            getAllPosts(dispatch);
         }
     }, []);
     const deletePerson = (person) => {
@@ -36,7 +37,7 @@ export const PeopleList = () => {
                         {posts.map((post) => {
                             return (
                                 <>
-                                    <tr>
+                                    <tr key={post.id}>
                                         <td>
                                             {post.id}
                                         </td>
