@@ -1,6 +1,6 @@
-import {combineReducers} from "redux";
-import { personReducer } from "./personReducer";
+import { combineReducers } from "redux";
+import { postReducer } from "./personReducer";
 
 export default combineReducers({
-    personState:personReducer
+    postState: postReducer
 })
